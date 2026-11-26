@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Pizza — ¡La Mejor Pizza! | Capacho, Táchira</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/logo.jpg" type="image/jpeg">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#inicio" class="navbar-logo" onclick="goToCategory('inicio'); return false;">
+            <img src="img/logo.jpg" alt="Ninja Pizza Logo">
+            <span>NINJA PIZZA</span>
+        </a>
+
+        <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="navbar-links" id="navbar-links">
+            <span class="user-greeting" id="user-greeting" style="display:none;"></span>
+            <button class="btn-login" id="btn-login" onclick="openLogin()">Iniciar Sesión</button>
+            <button class="btn-logout" id="btn-logout" onclick="logout()" style="display:none;">Cerrar Sesión</button>
+            <button class="btn-cart" onclick="toggleCart()">
+                Carrito
+                <span class="cart-count" id="cart-count" style="display:none;">0</span>
+            </button>
+        </div>
+    </nav>
+
+
+    <section class="hero" id="inicio">
+        <img src="img/logo.jpg" alt="Ninja Pizza" class="hero-logo">
+    </section>
+
+    <div class="category-nav" id="category-nav">
+        <a href="#inicio" class="cat-btn" data-cat="inicio" onclick="goToCategory('inicio'); return false;">Categorías</a>
+        <a href="#pizzas" class="cat-btn" data-cat="pizzas" onclick="goToCategory('pizzas'); return false;">Pizzas</a>
+        <a href="#hamburguesas" class="cat-btn" data-cat="hamburguesas" onclick="goToCategory('hamburguesas'); return false;">Hamburguesas</a>
+        <a href="#perros" class="cat-btn" data-cat="perros" onclick="goToCategory('perros'); return false;">Perros</a>
+        <a href="#salchipapas" class="cat-btn" data-cat="salchipapas" onclick="goToCategory('salchipapas'); return false;">Salchipapas</a>
+        <a href="#pollo" class="cat-btn" data-cat="pollo" onclick="goToCategory('pollo'); return false;">Pollo</a>
+        <a href="#todo" class="cat-btn" data-cat="todo" onclick="goToCategory('todo'); return false;">Ver Todo</a>
+    </div>
+
+    <section class="menu-section" id="categorias-home">
+        <h2>Nuestro Menú</h2>
+        <p class="section-desc">Selecciona una categoría para ver los productos y precios</p>
+        <div class="categories-grid">
+            <div class="category-card" onclick="goToCategory('pizzas')">
+                <div class="category-card-img">
+                    <img src="img/pizza-meganinja.jpg" alt="Pizzas">
+                </div>
+                <div class="category-card-info">
+                    <h3>Pizzas</h3>
+                    <p>24 variedades tradicionales y especiales en 3 tamaños (Pequeña, Mediana y Grande).</p>
+                    <span class="btn-ver-cat">Ver Pizzas →</span>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="goToCategory('hamburguesas')">
+                <div class="category-card-img">
+                    <img src="img/hamburguesa.jpg" alt="Hamburguesas">
+                </div>
+                <div class="category-card-info">
+                    <h3>Hamburguesas</h3>
+                    <p>Normal, Especial, Pollo, Carne Mechada, Chuleta y Mixta con los mejores ingredientes.</p>
+                    <span class="btn-ver-cat">Ver Hamburguesas →</span>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="goToCategory('perros')">
+                <div class="category-card-img">
+                    <img src="img/perro.jpg" alt="Perros Calientes">
+                </div>
+                <div class="category-card-info">
+                    <h3>Perros Calientes</h3>
+                    <p>Normal, Kosaca, Polaca, Pollo y Carne con queso y papitas.</p>
+                    <span class="btn-ver-cat">Ver Perros Calientes →</span>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="goToCategory('salchipapas')">
+                <div class="category-card-img">
+                    <img src="img/salchipapa.jpg" alt="Salchipapas">
+                </div>
+                <div class="category-card-info">
+                    <h3>Salchipapas</h3>
+                    <p>Salchipapa Normal, Kosaca, Polaca y crujientes Choripapas.</p>
+                    <span class="btn-ver-cat">Ver Salchipapas →</span>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="goToCategory('pollo')">
+                <div class="category-card-img">
+                    <img src="img/pollo.jpg" alt="Pollo a la Broaster">
+                </div>
+                <div class="category-card-info">
+                    <h3>Pollo a la Broaster</h3>
+                    <p>Crujiente pollo broaster en combos de 2, 4, 6 y 8 piezas con papas fritas.</p>
+                    <span class="btn-ver-cat">Ver Pollo Broaster →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="menu-section" id="pizzas">
+        <h2>Pizzas</h2>
+        <p class="section-desc">Todos nuestros precios están reflejados en Pesos Colombianos (COP)</p>
+        <div class="products-grid" id="pizzas-grid">
+        </div>
+    </section>
+
+    <section class="menu-section" id="hamburguesas">
+        <h2>Hamburguesas</h2>
+        <p class="section-desc">Todos nuestros precios están reflejados en Pesos Colombianos (COP)</p>
+        <div class="products-grid" id="hamburguesas-grid">
+        </div>
+    </section>
+
+    <section class="menu-section" id="perros">
+        <h2>Perros Calientes</h2>
+        <p class="section-desc">Todos nuestros precios están reflejados en Pesos Colombianos (COP)</p>
+        <div class="products-grid" id="perros-grid">
+        </div>
+    </section>
+
+    <section class="menu-section" id="salchipapas">
+        <h2>Salchipapas</h2>
+        <p class="section-desc">Todos nuestros precios están reflejados en Pesos Colombianos (COP)</p>
+        <div class="products-grid" id="salchipapas-grid">
+        </div>
+    </section>
+
+    <section class="menu-section" id="pollo">
+        <h2>Pollo a la Broaster</h2>
+        <p class="section-desc">Todos nuestros precios están reflejados en Pesos Colombianos (COP)</p>
+        <div class="products-grid" id="pollo-grid">
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Sucursal Capacho</h3>
+                <p>Calle 4 con Carrera 5 y 6</p>
+                <p>Frente al Grupo Miranda</p>
+                <p>Independencia, Capacho - Táchira</p>
+            </div>
+            <div class="footer-col">
+                <h3>Sucursal San Cristóbal</h3>
+                <p>Carrera 18 con Calle 16</p>
+                <p>La Romera</p>
+                <p>San Cristóbal, Estado Táchira</p>
+            </div>
+            <div class="footer-col">
+                <h3>Pedidos por WhatsApp</h3>
+                <p><strong>0414-1759772</strong></p>
+                <p><a href="https://wa.me/584141759772" target="_blank" style="color:var(--amarillo); font-weight:700;">Escríbenos directamente →</a></p>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ninja Pizza. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="login-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeLogin()">&times;</button>
+
+            <div id="login-form">
+                <h2>Iniciar Sesión</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">Correo Electrónico</label>
+                        <input type="email" id="login-email" placeholder="tu@correo.com">
+                        <p class="form-error" id="login-email-error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <input type="password" id="login-password" placeholder="Tu contraseña">
+                        <p class="form-error" id="login-password-error"></p>
+                    </div>
+                    <button type="submit" class="btn-submit">Iniciar Sesión</button>
+                </form>
+                <p class="login-info">
+                    ¿No tienes cuenta? <a href="#" onclick="showRegisterForm(); return false;">Regístrate aquí</a>
+                </p>
+            </div>
+
+            <div id="register-form" style="display:none;">
+                <h2>Crear Cuenta</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="reg-nombre">Nombre Completo</label>
+                        <input type="text" id="reg-nombre" placeholder="Tu nombre">
+                        <p class="form-error" id="reg-nombre-error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Correo Electrónico</label>
+                        <input type="email" id="reg-email" placeholder="tu@correo.com">
+                        <p class="form-error" id="reg-email-error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Contraseña</label>
+                        <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres">
+                        <p class="form-error" id="reg-password-error"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password2">Confirmar Contraseña</label>
+                        <input type="password" id="reg-password2" placeholder="Repite tu contraseña">
+                        <p class="form-error" id="reg-password2-error"></p>
+                    </div>
+                    <button type="submit" class="btn-submit">Crear Cuenta</button>
+                </form>
+                <p class="login-info">
+                    ¿Ya tienes cuenta? <a href="#" onclick="showLoginForm(); return false;">Inicia sesión</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Tu Pedido</h2>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">$0 COP</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Pedir por WhatsApp</button>
+            <button class="btn-clear-cart" onclick="clearCart()">Vaciar Carrito</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span class="toast-message"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
